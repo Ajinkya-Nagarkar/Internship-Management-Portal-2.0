@@ -14,15 +14,19 @@ export class UsersService {
         return this.userRepository.find();
     }
 
-    findById(id: number): Promise<User | null> {
-        return this.userRepository.findOne({
-            where: { id },
-        });
+    async findById(id: number): Promise<User | null> {
+        return this.userRepository
+            .createQueryBuilder('user')
+            .leftJoinAndSelect('user.roles', 'role')
+            .where('user.id = :id', { id })
+            .getOne();
     }
 
-    findByEmail(email: string): Promise<User | null> {
-        return this.userRepository.findOne({
-            where: { email },
-        });
+    async findByEmail(email: string): Promise<User | null> {
+        return this.userRepository
+            .createQueryBuilder('user')
+            .leftJoinAndSelect('user.roles', 'role')
+            .where('user.email = :email', { email })
+            .getOne();
     }
 }

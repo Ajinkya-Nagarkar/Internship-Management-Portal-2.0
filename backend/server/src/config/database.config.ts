@@ -9,7 +9,7 @@ export const databaseConfig = (): TypeOrmModuleOptions => ({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-
+    entities: [__dirname + '/../**/*.entity.{ts,js}'],
     synchronize: false,   // VERY IMPORTANT (schema already exists)
     autoLoadEntities: false,
     logging: true,
