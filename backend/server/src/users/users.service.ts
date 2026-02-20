@@ -29,4 +29,11 @@ export class UsersService {
             .where('user.email = :email', { email })
             .getOne();
     }
+
+    async findByIdWithRoles(id: number) {
+        return this.userRepository.findOne({
+            where: { id },
+            relations: ['role'],
+        });
+    }
 }

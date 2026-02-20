@@ -1,7 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-// console.log('DB_PASSWORD from env:', process.env.DB_PASSWORD);
-
 export const databaseConfig = (): TypeOrmModuleOptions => ({
     type: 'postgres',
     host: process.env.DB_HOST,

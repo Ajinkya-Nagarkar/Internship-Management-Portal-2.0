@@ -7,6 +7,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 import { Role } from '../../roles/role.entity';
 @Entity('users')
 export class User {
@@ -35,6 +36,7 @@ export class User {
     createdAt: Date;
 
     @Column({ nullable: false })
+    @Exclude()
     password: string;
 
     @ManyToMany(() => Role, { eager: false })
