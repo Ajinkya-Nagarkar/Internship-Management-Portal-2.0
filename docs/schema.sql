@@ -8,7 +8,8 @@ CREATE TABLE
         email VARCHAR(150) UNIQUE NOT NULL,
         phone VARCHAR(20),
         is_active BOOLEAN DEFAULT TRUE,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        password VARCHAR(255) NOT NULL,
     );
 
 CREATE TABLE
