@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
 import { UseGuards } from '@nestjs/common';
@@ -16,6 +16,12 @@ export class UsersController {
     @Roles(UserRole.ADMIN)
     findAll() {
         return this.usersService.findAll();
+    }
+
+    @Get('me')
+    @UseGuards(JwtAuthGuard)
+    getMyProfile(@Req() req): Promise<User | null> {
+        return this.usersService.findByIdWithRoles(req.user.userId);
     }
 
     @Get(':id')
