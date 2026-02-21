@@ -33,7 +33,7 @@ export class UsersService {
     async findByIdWithRoles(id: number) {
         return this.userRepository.findOne({
             where: { id },
-            relations: ['role'],
+            relations: ['roles'],
         });
     }
 }

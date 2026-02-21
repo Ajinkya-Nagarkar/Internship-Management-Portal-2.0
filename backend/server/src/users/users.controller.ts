@@ -12,11 +12,6 @@ import { UserRole } from './user-role.enum';
 export class UsersController {
     constructor(private readonly usersService: UsersService) { }
 
-    // @Get()
-    // getAllUsers(): Promise<User[]> {
-    //     return this.usersService.findAll();
-    // }
-
     @Get()
     @Roles(UserRole.ADMIN)
     findAll() {
