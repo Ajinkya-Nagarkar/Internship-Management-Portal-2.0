@@ -19,6 +19,7 @@ export class UsersController {
     }
 
     @Get(':id')
+    @Roles(UserRole.ADMIN)
     getUserById(
         @Param('id', ParseIntPipe) id: number,
     ): Promise<User | null> {
